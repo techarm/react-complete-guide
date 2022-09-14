@@ -2,6 +2,8 @@ import { useState } from "react";
 import "./ExpenseForm.css";
 
 function ExpenseForm(props) {
+  const [isEdit, setEdit] = useState(false);
+
   // ######### Approach 1: using multiple states #########
 
   // const [enteredTitle, setEnteredTitle] = useState("");
@@ -60,7 +62,7 @@ function ExpenseForm(props) {
     const expenseData = {
       title: userInput.enteredTitle,
       amount: userInput.enteredAmount,
-      date: userInput.enteredDate,
+      date: new Date(userInput.enteredDate),
     };
     // console.log(expenseData);
 
@@ -68,6 +70,7 @@ function ExpenseForm(props) {
     props.onSaveExpenseData(expenseData);
 
     // clear the form value
+    setEdit(false);
     setUserInput({
       enteredTitle: "",
       enteredAmount: "",
@@ -75,7 +78,20 @@ function ExpenseForm(props) {
     });
   };
 
-  return (
+  const cancelHandler = () => {
+    setEdit(false);
+    setUserInput({
+      enteredTitle: "",
+      enteredAmount: "",
+      enteredDate: "",
+    });
+  };
+
+  return !isEdit ? (
+    <button type="button" onClick={() => setEdit(true)}>
+      Add New Expense
+    </button>
+  ) : (
     <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
@@ -92,7 +108,7 @@ function ExpenseForm(props) {
             type="number"
             min="0.01"
             step="0.01"
-            value={userInput.amount}
+            value={userInput.enteredAmount}
             onChange={amountChangeHandler}
           ></input>
         </div>
@@ -108,6 +124,9 @@ function ExpenseForm(props) {
         </div>
       </div>
       <div className="new-expense__actions">
+        <button type="button" onClick={cancelHandler}>
+          Cancel
+        </button>
         <button type="submit">Add Expense</button>
       </div>
     </form>
