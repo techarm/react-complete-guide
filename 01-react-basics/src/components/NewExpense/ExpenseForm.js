@@ -2,8 +2,6 @@ import { useState } from "react";
 import "./ExpenseForm.css";
 
 function ExpenseForm(props) {
-  const [isEdit, setEdit] = useState(false);
-
   // ######### Approach 1: using multiple states #########
 
   // const [enteredTitle, setEnteredTitle] = useState("");
@@ -70,7 +68,6 @@ function ExpenseForm(props) {
     props.onSaveExpenseData(expenseData);
 
     // clear the form value
-    setEdit(false);
     setUserInput({
       enteredTitle: "",
       enteredAmount: "",
@@ -78,20 +75,7 @@ function ExpenseForm(props) {
     });
   };
 
-  const cancelHandler = () => {
-    setEdit(false);
-    setUserInput({
-      enteredTitle: "",
-      enteredAmount: "",
-      enteredDate: "",
-    });
-  };
-
-  return !isEdit ? (
-    <button type="button" onClick={() => setEdit(true)}>
-      Add New Expense
-    </button>
-  ) : (
+  return (
     <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
@@ -124,7 +108,7 @@ function ExpenseForm(props) {
         </div>
       </div>
       <div className="new-expense__actions">
-        <button type="button" onClick={cancelHandler}>
+        <button type="button" onClick={props.onCancel}>
           Cancel
         </button>
         <button type="submit">Add Expense</button>
