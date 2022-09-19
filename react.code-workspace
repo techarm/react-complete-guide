@@ -8,6 +8,9 @@
     },
     {
       "path": "03-practice-project"
+    },
+    {
+      "path": "04-effect-reducer-context"
     }
   ]
 }
