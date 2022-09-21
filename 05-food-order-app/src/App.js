@@ -1,7 +1,13 @@
+import Header from "./components/Header/Header";
+import AvailableMeals from "./components/Meal/AvailableMeals";
+import MealsSummary from "./components/Meal/MealsSummary";
+
 function App() {
   return (
     <div>
-      <h2>Let's get started!</h2>
+      <Header />
+      <MealsSummary />
+      <AvailableMeals />
     </div>
   );
 }
