@@ -11,6 +11,9 @@
     },
     {
       "path": "04-effect-reducer-context"
+    },
+    {
+      "path": "05-food-order-app"
     }
   ]
 }
