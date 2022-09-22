@@ -5,21 +5,25 @@ const OrderContext = React.createContext({
 });
 
 export const CartContextProvider = (props) => {
-  const [orders, setOrders] = useState({});
+  // const [orders, setOrders] = useState({});
 
-  const addOrderAmount = (id, amount) => {
-    let order = orders[id];
-    if (order) {
-      order[id] += amount;
-    } else {
-      order[id] = amount;
-    }
-    setOrders((preOrder) => {
-      return [...preOrder, order];
-    });
-  };
+  // const addOrderAmount = (id, amount) => {
+  //   let order = orders[id];
+  //   if (order) {
+  //     order[id] += amount;
+  //   } else {
+  //     order[id] = amount;
+  //   }
+  //   setOrders((preOrder) => {
+  //     return [...preOrder, order];
+  //   });
+  // };
 
-  return <OrderContext value={{ order: {} }}>{props.children}</OrderContext>;
+  return (
+    <OrderContext.Provider value={{ order: {} }}>
+      {props.children}
+    </OrderContext.Provider>
+  );
 };
 
 export default OrderContext;

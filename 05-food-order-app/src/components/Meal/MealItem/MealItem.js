@@ -3,14 +3,14 @@ import MealItemForm from "./MealItemForm";
 
 const MealItem = (props) => {
   return (
-    <div className={style.meal}>
+    <li className={style.meal}>
       <div>
         <h3>{props.title}</h3>
         <span className={style.description}>{props.description}</span>
-        <span className={style.price}>${props.price}</span>
+        <span className={style.price}>${props.price.toFixed(2)}</span>
       </div>
-      <MealItemForm />
-    </div>
+      <MealItemForm id={props.id} />
+    </li>
   );
 };
 
