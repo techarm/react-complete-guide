@@ -14,6 +14,9 @@
     },
     {
       "path": "05-food-order-app"
+    },
+    {
+      "path": "06-class-based-component"
     }
   ]
 }
