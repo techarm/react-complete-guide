@@ -2,7 +2,7 @@
 
 ## How to Use
 
-This project is to ese mockoon cli to create mock server.
+This project is to ues mockoon cli to create mock server.
 
 ## 1. Install
 
