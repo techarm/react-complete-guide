@@ -14,7 +14,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "mock-start": "mockoon-cli start --data ./mock/movies.json",
+    "mock-list": "mockoon-cli list",
+    "mock-stop": "mockoon-cli stop 'mockoon-movies'"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -30,5 +33,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@mockoon/cli": "^2.1.0"
   }
 }

@@ -1,0 +1,104 @@
+{
+  "uuid": "b4c7bb3a-ee86-487a-ad8c-4ea72f07c168",
+  "lastMigration": 22,
+  "name": "Movies",
+  "endpointPrefix": "api",
+  "latency": 0,
+  "port": 3001,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "183204b6-a527-4ee9-bbde-4a32a7abb13b",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "films",
+      "responses": [
+        {
+          "uuid": "5b2028fd-259f-4020-8260-c765c02c6552",
+          "body": "{\n  \"results\": [\n    {{#repeat 3}}\n      {\n        \"id\": \"{{@index}}\",\n        \"title\": \"{{faker 'lorem.words'}}\",\n        \"openingText\": \"{{faker 'lorem.paragraph'}}\",\n        \"releaseDate\": \"{{faker 'date.past'}}\"\n      }\n    {{/repeat}}\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "f589c0ff-3e64-4570-b260-9ab151c4380a",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "films",
+      "responses": [
+        {
+          "uuid": "bcb343c7-6eb5-4cd2-93f6-24286f0d753a",
+          "body": "{\n    \"id\": \"{{faker \"datatype.uuid\"}}\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    },
+    {
+      "key": "Access-Control-Allow-Origin",
+      "value": "*"
+    },
+    {
+      "key": "Access-Control-Allow-Methods",
+      "value": "GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"
+    },
+    {
+      "key": "Access-Control-Allow-Headers",
+      "value": "Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ]
+}
