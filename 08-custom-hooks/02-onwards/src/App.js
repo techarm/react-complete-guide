@@ -7,32 +7,25 @@ import useHttp from "./hooks/use-http";
 function App() {
   const [tasks, setTasks] = useState([]);
 
-  const transformTasks = useCallback((data) => {
-    const loadedTasks = [];
-
-    for (const taskKey in data) {
-      loadedTasks.push({ id: taskKey, text: data[taskKey].text });
-    }
-
-    setTasks(loadedTasks);
-  }, []);
-
-  const {
-    isLoading,
-    error,
-    sendRequest: fetchTasks,
-  } = useHttp(
-    useMemo(() => {
-      return {
-        url: "https://react-http-ea6d1-default-rtdb.asia-southeast1.firebasedatabase.app/tasks.json",
-      };
-    }, []),
-    transformTasks
-  );
+  const { isLoading, error, sendRequest: fetchTasks } = useHttp();
 
   useEffect(() => {
-    console.log("1");
-    fetchTasks();
+    const transformTasks = (data) => {
+      const loadedTasks = [];
+
+      for (const taskKey in data) {
+        loadedTasks.push({ id: taskKey, text: data[taskKey].text });
+      }
+
+      setTasks(loadedTasks);
+    };
+
+    fetchTasks(
+      {
+        url: "https://react-http-ea6d1-default-rtdb.asia-southeast1.firebasedatabase.app/tasks.json",
+      },
+      transformTasks
+    );
   }, [fetchTasks]);
 
   const taskAddHandler = (task) => {
