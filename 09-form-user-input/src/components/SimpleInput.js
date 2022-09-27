@@ -1,31 +1,41 @@
 import { useState } from "react";
+import useInput from "../hooks/use-input";
 
 const SimpleInput = (props) => {
-  const [enterdName, setEnterName] = useState("");
-  const [enteredNameTouched, setEnterNameTouched] = useState(false);
+  const {
+    value: enterdName,
+    isValid: enteredNameIsValid,
+    hasError: nameInputIsInvalid,
+    valueChangeHandler: nameInputChangeHandler,
+    inputBlurHandler: nameInputBlurHandler,
+    reset: resetNameInput,
+  } = useInput((value) => value.trim() !== "");
+
+  // const [enterdName, setEnterName] = useState("");
+  // const [enteredNameTouched, setEnterNameTouched] = useState(false);
 
   const [enterdEmail, setEnterEmail] = useState("");
   const [enteredEmailTouched, setEnterEmailTouched] = useState(false);
 
-  const enteredNameIsValid = enterdName.trim() !== "";
-  const nameInputIsInvalid = !enteredNameIsValid && enteredNameTouched;
+  // const enteredNameIsValid = enterdName.trim() !== "";
+  // const nameInputIsInvalid = !enteredNameIsValid && enteredNameTouched;
 
   const enteredEmailIsValid = enterdEmail.includes("@");
   const emailInputIsInvalid = !enteredEmailIsValid && enteredEmailTouched;
 
   const formIsValid = enteredNameIsValid && enteredEmailIsValid;
 
-  const nameInputChangeHandler = (event) => {
-    setEnterName(event.target.value);
-  };
+  // const nameInputChangeHandler = (event) => {
+  //   setEnterName(event.target.value);
+  // };
 
   const emailInputChangeHandler = (event) => {
     setEnterEmail(event.target.value);
   };
 
-  const nameInputBlurHandler = (event) => {
-    setEnterNameTouched(true);
-  };
+  // const nameInputBlurHandler = (event) => {
+  //   setEnterNameTouched(true);
+  // };
 
   const emailInputBlurHandler = (event) => {
     setEnterEmailTouched(true);
@@ -34,7 +44,6 @@ const SimpleInput = (props) => {
   const formSubmitHandler = (event) => {
     event.preventDefault();
 
-    setEnterNameTouched(true);
     setEnterEmailTouched(true);
 
     if (!enteredNameIsValid) {
@@ -49,8 +58,7 @@ const SimpleInput = (props) => {
       `send data to the server: name=${enterdName}, email=${enterdEmail}`
     );
 
-    setEnterName("");
-    setEnterNameTouched(false);
+    resetNameInput();
 
     setEnterEmail("");
     setEnterEmailTouched(false);
