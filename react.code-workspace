@@ -26,6 +26,9 @@
     },
     {
       "path": "09-form-user-input"
+    },
+    {
+      "path": "10-food-order-http-forms"
     }
   ]
 }
