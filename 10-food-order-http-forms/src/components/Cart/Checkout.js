@@ -50,7 +50,12 @@ const Checkout = (props) => {
       return;
     }
 
-    // submit the cart data
+    props.onConfirm({
+      name: enteredName,
+      email: enteredMailAddress,
+      phoneNumber: enteredPhoneNumber,
+      address: enteredAddress,
+    });
   };
 
   return (
