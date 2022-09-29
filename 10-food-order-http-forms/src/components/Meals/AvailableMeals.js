@@ -11,7 +11,7 @@ const AvailableMeals = () => {
   useEffect(() => {
     const fetchMeals = async () => {
       const response = await fetch(
-        "https://react-http-ea6d1-default-rtdb.asia-southeast1.firebasedatabase1.app/meals.json"
+        "https://react-http-ea6d1-default-rtdb.asia-southeast1.firebasedatabase.app/meals.json"
       );
 
       if (!response.ok) {
@@ -38,6 +38,22 @@ const AvailableMeals = () => {
     });
   }, []);
 
+  if (isLoading) {
+    return (
+      <section className={classes.loading}>
+        <p>Loading...</p>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className={classes.error}>
+        <p>{error}</p>
+      </section>
+    );
+  }
+
   const mealsList = meals.map((meal) => (
     <MealItem
       key={meal.id}
@@ -50,11 +66,7 @@ const AvailableMeals = () => {
 
   return (
     <section className={classes.meals}>
-      <Card>
-        {isLoading && <p>Loading...</p>}
-        {!isLoading && <ul>{mealsList}</ul>}
-        {error && <p>{error}</p>}
-      </Card>
+      <Card>{<ul>{mealsList}</ul>}</Card>
     </section>
   );
 };
