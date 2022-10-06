@@ -32,6 +32,9 @@
     },
     {
       "path": "11-redux-basics"
+    },
+    {
+      "path": "12-redux-advanced"
     }
   ]
 }
