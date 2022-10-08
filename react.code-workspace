@@ -35,6 +35,9 @@
     },
     {
       "path": "12-redux-advanced"
+    },
+    {
+      "path": "13-react-router"
     }
   ]
 }
