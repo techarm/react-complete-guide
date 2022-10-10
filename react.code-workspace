@@ -38,6 +38,9 @@
     },
     {
       "path": "13-react-router"
+    },
+    {
+      "path": "14-deploying-apps"
     }
   ]
 }
