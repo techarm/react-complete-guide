@@ -41,6 +41,9 @@
     },
     {
       "path": "14-deploying-apps"
+    },
+    {
+      "path": "15-authentication"
     }
   ]
 }
