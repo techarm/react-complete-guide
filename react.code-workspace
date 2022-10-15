@@ -47,6 +47,9 @@
     },
     {
       "path": "16-nextjs"
+    },
+    {
+      "path": "17-animations"
     }
   ]
 }
