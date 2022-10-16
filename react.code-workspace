@@ -50,6 +50,9 @@
     },
     {
       "path": "17-animations"
+    },
+    {
+      "path": "18-replace-redux"
     }
   ]
 }
