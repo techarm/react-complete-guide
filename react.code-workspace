@@ -53,6 +53,9 @@
     },
     {
       "path": "18-replace-redux"
+    },
+    {
+      "path": "19-testing"
     }
   ]
 }
