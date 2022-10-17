@@ -56,6 +56,9 @@
     },
     {
       "path": "19-testing"
+    },
+    {
+      "path": "20-typescript"
     }
   ]
 }
