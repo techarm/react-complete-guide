@@ -1,17 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import Todo from "../models/todo";
+import { TodosContext } from "../store/todo-context";
 import styles from "./TodoItem.module.css";
 
 type Props = {
   todo: Todo;
-  onDelete: (id: string) => void;
 };
 
 const TodoItem: React.FC<Props> = (props) => {
   const { id, text } = props.todo;
+  const todoCtx = useContext(TodosContext);
 
   const deleteHandler = () => {
-    props.onDelete(id);
+    todoCtx.deleteTodo(id);
   };
 
   return (
